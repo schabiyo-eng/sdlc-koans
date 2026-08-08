@@ -1,0 +1,14 @@
+---
+description: Patterns for authoring koans under src/koans
+globs: src/koans/**
+alwaysApply: false
+---
+
+# Koan authoring
+
+- Register every koan in `registry.ts` (slug, title, toolIds, Component).
+- Use `KoanShell` with `slug` + `scenario`. Gate unlock via progress order.
+- Beat order: ZenQuote → InvestigatePanel and/or CodeBlank → ChoiceQuestion → Insight → ContinueLink.
+- For review/CI failure: show `LoopBack`, then replay a CodeBlank fix on the same page; call `visitLoop(slug)` without erasing completed progress.
+- CodeBlank: provide multiple acceptable `answers` (trimmed, case-insensitive). No real runtime.
+- Keep copy plain until the insight names the concept.

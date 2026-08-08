@@ -1,0 +1,118 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 2rem 5rem;
+  text-align: center;
+}
+
+.brand {
+  font-family: var(--font-sans);
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1.2s var(--ease) 0.2s forwards;
+}
+
+.zen {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink-secondary);
+  line-height: 1.85;
+  max-width: 32rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 1.4s var(--ease) 0.9s forwards;
+}
+
+.cta {
+  opacity: 0;
+  animation: fadeUp 1s var(--ease) 1.8s forwards;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.6rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.4rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.5);
+  transition:
+    background 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+
+.btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btnSecondary {
+  display: inline-block;
+  margin-left: 0.65rem;
+  margin-top: 0.65rem;
+  padding: 0.65rem 1.6rem;
+  border: 1px solid var(--pass);
+  border-radius: 0.4rem;
+  text-decoration: none;
+  color: var(--pass);
+  font-weight: 500;
+  background: var(--pass-soft);
+  transition:
+    background 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+
+.btnSecondary:hover {
+  background: var(--pass);
+  color: #fff;
+}
+
+.hint {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+.progress {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: rgba(28, 36, 48, 0.08);
+}
+
+.reset {
+  margin-top: 2rem;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Scoped locally: CSS Modules rewrites animation-name per file, so the
+   keyframes must live in this file to resolve. */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

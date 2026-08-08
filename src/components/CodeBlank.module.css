@@ -1,0 +1,109 @@
+.wrap {
+  max-width: 38rem;
+  margin: 0 auto 1.25rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.editor {
+  background: var(--bg-ink);
+  color: #e8ecef;
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  box-shadow: var(--shadow-soft);
+  overflow-x: auto;
+}
+
+.line {
+  white-space: pre;
+}
+
+.blank {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 0.15rem;
+  padding: 0.1rem 0.35rem;
+  border: none;
+  border-bottom: 2px solid #7eb0d8;
+  background: rgba(126, 176, 216, 0.12);
+  color: #b8e0ff;
+  font: inherit;
+  text-align: center;
+}
+
+.blank:focus {
+  outline: none;
+  background: rgba(126, 176, 216, 0.22);
+}
+
+.test {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.fail {
+  border-color: rgba(155, 44, 44, 0.35);
+  background: var(--fail-soft);
+  color: var(--fail);
+}
+
+.pass {
+  border-color: rgba(45, 106, 79, 0.35);
+  background: var(--pass-soft);
+  color: var(--pass);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.run {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.4rem;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.run:hover {
+  background: var(--accent-hover);
+}
+
+.tip {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 0.5rem 0.85rem;
+  border: none;
+  border-radius: 0.4rem;
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.tip:hover {
+  color: var(--ink-secondary);
+}
+
+.hint {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}

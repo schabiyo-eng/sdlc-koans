@@ -1,0 +1,15 @@
+---
+description: SDLC Koans pedagogy — investigate, discover, then name. Always apply.
+alwaysApply: true
+---
+
+# SDLC Koans pedagogy
+
+Audience: Account Executives, FDEs, Solutions Architects — people near developers.
+
+- Never name the concept first. Order is always: zen → scenario → investigate → question → insight (name) → tools → continue.
+- Wrong answers get specific feedback; correct answers unlock the next beat and relieve the PainMeter.
+- Emit `friction` when the learner hits developer pain; emit `relief` when the concept resolves it.
+- Introduce tools by role first, then name (via ToolChip / `lib/tools.ts`).
+- Failure is first-class: review/CI loop back to implement; monitoring defects open a new ticket / continue into `the-loop`.
+- Do not add a backend, auth, or real GitHub API. Progress lives in localStorage via `lib/progress.ts`.

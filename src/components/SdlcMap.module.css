@@ -1,0 +1,417 @@
+.page {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 2.25rem 1.5rem 3rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pass);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.55rem;
+}
+
+.lede {
+  color: var(--ink-secondary);
+  font-size: 0.95rem;
+  max-width: 28rem;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.acts {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.25rem auto 0;
+}
+
+.act {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition:
+    color 0.9s var(--ease),
+    border-color 0.9s var(--ease),
+    background 0.9s var(--ease);
+}
+
+.actLive {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 21rem;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 62rem) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.ring {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 6;
+}
+
+.edge {
+  stroke: rgba(28, 36, 48, 0.16);
+  stroke-width: 2;
+  transition: stroke 1.2s var(--ease);
+}
+
+.edgeLit {
+  stroke: var(--pass);
+  stroke-width: 2.5;
+}
+
+.loop {
+  fill: none;
+  stroke: rgba(155, 44, 44, 0.16);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  transition:
+    stroke 0.9s var(--ease),
+    stroke-width 0.9s var(--ease);
+}
+
+.loopActive {
+  stroke: var(--fail);
+  stroke-width: 2.75;
+  animation: marchBack 3s linear infinite;
+}
+
+/* Dashes travel from the failing step back toward the step that must redo work. */
+@keyframes marchBack {
+  from {
+    stroke-dashoffset: 22;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.centerLabel {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  fill: var(--ink);
+  font-weight: 600;
+}
+
+.centerSub {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  fill: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+
+.node {
+  cursor: pointer;
+  outline: none;
+}
+
+.disc {
+  fill: var(--bg-paper);
+  stroke: var(--border-strong);
+  stroke-width: 1.75;
+  transform-origin: center;
+  transform-box: fill-box;
+  transition:
+    fill 0.8s var(--ease),
+    stroke 0.8s var(--ease);
+}
+
+.nodeLogo {
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 0.8s var(--ease);
+}
+
+/* Ripple that leaves the node the story is currently on. */
+.halo {
+  fill: none;
+  stroke: var(--pass);
+  stroke-width: 1.5;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes haloOut {
+  from {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+.nodeLabel {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  fill: var(--ink-muted);
+  pointer-events: none;
+  transition: fill 0.8s var(--ease);
+}
+
+/* Attribution under the step name — present but never competing with it. */
+.nodeTool {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.03em;
+  fill: var(--ink-muted);
+  opacity: 0.5;
+  pointer-events: none;
+  transition:
+    fill 0.8s var(--ease),
+    opacity 0.8s var(--ease);
+}
+
+/* Ambient state changes are slow, but pointer feedback must stay immediate. */
+.node:hover .disc,
+.node:focus-visible .disc {
+  stroke: var(--accent);
+  transition: stroke 0.15s var(--ease);
+}
+
+.node:hover .nodeLogo,
+.node:focus-visible .nodeLogo,
+.node:hover .nodeTool,
+.node:focus-visible .nodeTool {
+  opacity: 0.9;
+  transition: opacity 0.15s var(--ease);
+}
+
+.nodePinned .disc {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+}
+
+.nodePinned .nodeLabel,
+.nodePinned .nodeTool {
+  fill: var(--accent);
+}
+
+.nodeLive .disc {
+  fill: var(--pass-soft);
+  stroke: var(--pass);
+  animation: nodePop 1.15s var(--ease);
+}
+
+.nodeLive .nodeLabel,
+.nodeLive .nodeTool {
+  fill: var(--pass);
+}
+
+.nodeLive .halo {
+  animation: haloOut 1.6s var(--ease);
+}
+
+.nodeFail .disc,
+.nodeFailSoft .disc {
+  fill: var(--fail-soft);
+  stroke: var(--fail);
+}
+
+.nodeFail .disc {
+  animation: nodePop 1.15s var(--ease);
+}
+
+.nodeFail .halo {
+  stroke: var(--fail);
+  animation: haloOut 1.6s var(--ease);
+}
+
+.nodeFail .nodeLabel,
+.nodeFail .nodeTool,
+.nodeFailSoft .nodeLabel,
+.nodeFailSoft .nodeTool {
+  fill: var(--fail);
+}
+
+.nodeFailSoft .disc {
+  stroke-dasharray: 3 3;
+}
+
+.nodeLive .nodeLogo,
+.nodeFail .nodeLogo,
+.nodeFailSoft .nodeLogo,
+.nodePinned .nodeLogo {
+  opacity: 1;
+}
+
+.nodeLive .nodeTool,
+.nodeFail .nodeTool,
+.nodeFailSoft .nodeTool,
+.nodePinned .nodeTool {
+  opacity: 1;
+}
+
+@keyframes nodePop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeCap {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.95rem 1.05rem 1rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  animation: fadeCap 0.4s var(--ease);
+}
+
+.detailStep {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.take {
+  color: var(--accent);
+}
+
+.hero {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink);
+  /* Only the narration varies in length, so reserve the space here instead of
+     padding out the whole panel. */
+  min-height: 4.8rem;
+  animation: heroIn 0.95s var(--ease);
+}
+
+@keyframes heroIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.concept {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-secondary);
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+}
+
+.status {
+  padding-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+}
+
+.statusFail {
+  color: var(--fail);
+}
+
+.remaining {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.remaining a {
+  text-decoration: none;
+}
+
+.remaining a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 1.75rem;
+}
+
+.home {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.home:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

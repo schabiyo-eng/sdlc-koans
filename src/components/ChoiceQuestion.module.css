@@ -1,0 +1,89 @@
+.wrap {
+  max-width: 36rem;
+  margin: 0 auto 1.25rem;
+  padding: 1.15rem 1.25rem;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  animation: fadeUp 0.5s var(--ease) both;
+}
+
+.prompt {
+  margin-bottom: 0.9rem;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  justify-content: center;
+}
+
+.option {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0.4rem;
+  background: var(--bg-paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    border-color 0.2s var(--ease),
+    background 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.option:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.correct {
+  border-color: transparent;
+  background: var(--pass-soft);
+  color: var(--pass);
+}
+
+.wrong {
+  border-color: transparent;
+  background: var(--fail-soft);
+  color: var(--fail);
+}
+
+.disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.feedback {
+  min-height: 1.4em;
+  margin-top: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.feedbackOk {
+  color: var(--pass);
+}
+
+.feedbackBad {
+  color: var(--fail);
+}
+
+/* Scoped locally: CSS Modules rewrites animation-name per file, so the
+   keyframes must live in this file to resolve. */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

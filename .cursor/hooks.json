@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": ".cursor/hooks/format.sh"
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": ".cursor/hooks/block-destructive-git.sh",
+        "matcher": "git\\s+(push\\s+--force|push\\s+-f|reset\\s+--hard|clean\\s+-fd)"
+      }
+    ]
+  }
+}

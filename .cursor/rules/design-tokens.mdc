@@ -1,0 +1,15 @@
+---
+description: Engineering-notebook visual tokens for SDLC Koans UI
+globs: src/**/*.{tsx,css}
+alwaysApply: false
+---
+
+# Design tokens
+
+Use CSS variables from `src/styles/tokens.css` only.
+
+- Paper background (`--bg-paper`), ink (`--ink`), accent ink-blue (`--accent`).
+- Serif for zen quotes; sans for UI; mono for tickets, diffs, CI logs, code.
+- No purple gradients, no neon glow, no dark-terminal default theme.
+- Opening: brand-level **SDLC Koans**, one zen, one CTA — no marketing clutter.
+- One job per section; motion only for reveal hierarchy (`fade-up` / unlock).
