@@ -1,0 +1,87 @@
+:root {
+  --bg-paper: #f4f1ea;
+  --bg-panel: #ebe6dc;
+  --bg-ink: #1c2430;
+  --ink: #1c2430;
+  --ink-secondary: #4a5564;
+  --ink-muted: #7a8494;
+  --accent: #1f4e79;
+  --accent-soft: rgba(31, 78, 121, 0.1);
+  --accent-hover: #163a5c;
+  --pass: #2d6a4f;
+  --pass-soft: rgba(45, 106, 79, 0.12);
+  --fail: #9b2c2c;
+  --fail-soft: rgba(155, 44, 44, 0.12);
+  --warn: #8a6d1d;
+  --border: rgba(28, 36, 48, 0.14);
+  --border-strong: rgba(28, 36, 48, 0.28);
+  --shadow-soft: 0 1px 0 rgba(28, 36, 48, 0.04), 0 8px 24px rgba(28, 36, 48, 0.06);
+
+  --font-serif: 'Source Serif 4', 'Iowan Old Style', 'Palatino Linotype', serif;
+  --font-sans: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius: 0.5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top, rgba(31, 78, 121, 0.04), transparent 50%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 27px,
+      rgba(28, 36, 48, 0.03) 28px
+    ),
+    var(--bg-paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+}
+
+button {
+  font: inherit;
+}
+
+code,
+.mono {
+  font-family: var(--font-mono);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.55s var(--ease) both;
+}

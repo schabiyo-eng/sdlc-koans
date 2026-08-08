@@ -1,0 +1,83 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 0 auto 1.5rem;
+  max-width: 44rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition:
+    border-color 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+
+.card:hover:not(:disabled) {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.card:disabled {
+  cursor: default;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.body {
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+  line-height: 1.55;
+}
+
+.reveal {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border);
+  color: var(--ink);
+  font-size: 0.92rem;
+  animation: fadeUp 0.4s var(--ease) both;
+}
+
+.opened {
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Scoped locally: CSS Modules rewrites animation-name per file, so the
+   keyframes must live in this file to resolve. */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

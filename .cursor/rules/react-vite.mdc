@@ -1,0 +1,13 @@
+---
+description: React + Vite conventions for SDLC Koans
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# React + Vite
+
+- Functional components only; colocate CSS modules next to components.
+- Routing via React Router (`/`, `/koans/:slug`) with Vite `base` for GitHub Pages.
+- Progress: `ProgressProvider` + `lib/progress.ts` — never invent a parallel store.
+- Prefer shared components (`InvestigatePanel`, `ChoiceQuestion`, `CodeBlank`, `LoopBack`) over one-off UI.
+- No backend calls, no environment secrets in the client.
