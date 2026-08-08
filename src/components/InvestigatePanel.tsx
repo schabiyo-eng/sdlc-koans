@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import styles from './InvestigatePanel.module.css'
 
 export type InvestigateCard = {
@@ -15,14 +15,25 @@ type Props = {
 
 export function InvestigatePanel({ cards, onAllInvestigated }: Props) {
   const [opened, setOpened] = useState<Set<string>>(new Set())
+  const notified = useRef(false)
 
   function open(id: string) {
-    if (opened.has(id)) return
-    const next = new Set(opened)
-    next.add(id)
-    setOpened(next)
-    if (next.size === cards.length) onAllInvestigated?.()
+    setOpened((prev) => {
+      if (prev.has(id)) return prev
+      const next = new Set(prev)
+      next.add(id)
+      return next
+    })
   }
+
+  // Fires once the last card opens. The ref keeps a repeated click on that card
+  // from unlocking the next beat twice.
+  useEffect(() => {
+    if (cards.length > 0 && opened.size === cards.length && !notified.current) {
+      notified.current = true
+      onAllInvestigated?.()
+    }
+  }, [opened, cards.length, onAllInvestigated])
 
   return (
     <div className={styles.grid}>

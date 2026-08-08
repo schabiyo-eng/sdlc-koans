@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import styles from './CodeBlank.module.css'
 
 type Props = {
@@ -26,11 +26,16 @@ export function CodeBlank({
 }: Props) {
   const [value, setValue] = useState('')
   const [status, setStatus] = useState<'idle' | 'fail' | 'pass'>('idle')
+  // `status` is stale within a tick, so held Enter or a double click could advance
+  // the koan more than once.
+  const passed = useRef(false)
 
   function run() {
+    if (passed.current) return
     const normalized = value.trim().toLowerCase().replace(/;$/, '')
     const ok = answers.some((a) => a.trim().toLowerCase().replace(/;$/, '') === normalized)
     if (ok) {
+      passed.current = true
       setStatus('pass')
       onPass()
     } else {
