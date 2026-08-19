@@ -1,0 +1,10 @@
+{
+  "name": "sdlc-koans",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "dev",
+      "command": "npm run dev -- --host"
+    }
+  ]
+}
